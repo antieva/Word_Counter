@@ -14,6 +14,9 @@ _A web app which let user enter a sentence and a word to count how frequently th
   * _Example Input: "Hey", "How are you?"_
   * _Example Output: [0]_
 
+* _The program returns 2 if the word appears twice in the given string._
+  * _Example Input: "dog", "The handsome, energetic, young dog was playing with a smaller more lethargic puppy and his mother, old and lazy dog."_
+  * _Example Output: [2]_
 
 ## Setup/Installation Requirements
 
