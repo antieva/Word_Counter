@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Word Counter</title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+    <link rel="stylesheet" type="text/css" href="~/css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>WORD COUNTER APP</h1>
+    </header>
+    <div class = "container">
+      <form action='/' method = 'post'>
+        <div class='form-group'>
+          <label for='word'>Enter the word you want to count:</label>
+          <input name='word' class='form-control' type='text'>
+        </div>
+        <div class='form-group'>
+          <label for='moreWords'>Enter your sentence:</label>
+          <input name='moreWords' class='form-control' type='text'>
+        </div>
+        <button type='submit' class='btn btn-primary'>Submit</button>
+      </form>
+      <br>
+
+      @if (Model == null) {
+        <hr>
+      } else if (!Model.IsWordValid() || !Model.IsValid()) {
+        <hr>
+        <h2>Your input is not svalid</h2>
+      } else if (Model.WordCounter() == 0) {
+        <hr>
+        <h2>The word <span>@Model.GetWord()</span> does not appear in the sentence <span>@Model.GetWords()</span>.</h2>
+      } else if (Model.WordCounter() == 1) {
+        <hr>
+        <h2>The word <span>@Model.GetWord()</span> appears in the sentence <span>@Model.GetWords()</span> 1 time</h2>
+      } else if (Model.WordCounter() > 1){
+        <hr>
+        <h2>The word <span>@Model.GetWord()</span> appears in the sentence <span>@Model.GetWords()</span> @Model.WordCounter() times</h2>
+      }
+      <footer>
+       <ul>
+         <li>Posted by: Eva Antipina</li>
+         <li>Contact information: <a href="mailto:example@gmail.com">
+        example@gmail.com</a>.</li>
+       </ul>
+     </footer>
+    </div>
+  </body>
+</html>

@@ -12,25 +12,37 @@ namespace WordCounterApp.Tests
     [TestMethod]
     public void WordCounter_HowAreYouHey_0()
     {
-        Assert.AreEqual(0, RepeatCounter.WordCounter("how are you?", "hey"));
+        RepeatCounter newCounter = new RepeatCounter("dog", "dog dog dog");
+        Console.WriteLine(newCounter.WordCounter());
+        Assert.AreEqual(3, newCounter.WordCounter());
     }
 
     [TestMethod]
     public void WordCounter_LOngSentanceDog_2()
     {
-        Assert.AreEqual(2, RepeatCounter.WordCounter("The handsome, energetic, young dog was playing with a smaller more lethargic puppy and his mother, old and lazy dog.", "dog"));
+        RepeatCounter anotherCounter = new RepeatCounter("dog", "The handsome, energetic, young dog was playing with a smaller more lethargic puppy and his mother, old and lazy dog.");
+        Assert.AreEqual(2, anotherCounter.WordCounter());
     }
 
     [TestMethod]
     public void IsValid_g9003000_true()
     {
-        Assert.AreEqual(true, RepeatCounter.IsValid("g900, 3000$?"));
+        RepeatCounter anotherCounter = new RepeatCounter("hi", "g900, 3000$?");
+        Assert.AreEqual(true, anotherCounter.IsValid());
     }
 
     [TestMethod]
     public void IsValid_emptyString_false()
     {
-        Assert.AreEqual(false, RepeatCounter.IsValid(""));
+      RepeatCounter anotherCounter = new RepeatCounter("hi", "");
+      Assert.AreEqual(false, anotherCounter.IsValid());
+    }
+
+    [TestMethod]
+    public void IsWordValid_TwoWords_false()
+    {
+      RepeatCounter anotherCounter = new RepeatCounter("two words", "Hey you");
+      Assert.AreEqual(false, anotherCounter.IsWordValid());
     }
   }
 }
