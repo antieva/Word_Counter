@@ -18,6 +18,14 @@ _A web app which let user enter a sentence and a word to count how frequently th
   * _Example Input: "dog", "The handsome, energetic, young dog was playing with a smaller more lethargic puppy and his mother, old and lazy dog."_
   * _Example Output: [2]_
 
+* _The program checks if the user input is valid or not. Valid input is not empty string which contains at least one letter._
+  * _Example Input: "Hey", "g900, 3000$?"_
+  * _Example Output: [true]_
+
+* _The program checks if the user input is valid or not. Valid input is not empty string which contains at least one letter._
+  * _Example Input: ""_
+  * _Example Output: [false]_
+
 ## Setup/Installation Requirements
 
 * _Clone or download the repository._
