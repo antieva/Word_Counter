@@ -7,36 +7,42 @@
   </head>
   <body>
     <header>
-      <h1>WORD COUNTER APP</h1>
+      <h1>WORD COUNTER</h1>
+      <hr>
+      <p id="counterHeading"> <span class="box">0</span><span class="box">0</span><span class="box">0</span><span class="box">1</span><span class="box">2</span><span class="box">7</span></p>
+      <hr>
+      <h3>Fast, easy word counts for online text</h3>
     </header>
     <div class = "container">
+      <p id = "first">This application counts how frequently a word appears in a given string.</p>
+      <p>Please input both the word and the string of words to check.</p>
       <form action='/' method = 'post'>
         <div class='form-group'>
-          <label for='word'>Enter the word you want to count:</label>
-          <input name='word' class='form-control' type='text'>
+          <label for='word'>Word to count:</label>
+          <input name='word' class='form-control width' type='text' value = "@Model.GetWord()">
         </div>
         <div class='form-group'>
-          <label for='moreWords'>Enter your sentence:</label>
-          <input name='moreWords' class='form-control' type='text'>
+          <label for='moreWords'>Sentence or text:</label>
+          <input name='moreWords' class='form-control width' type='text' value = "@Model.GetWords()">
         </div>
         <button type='submit' class='btn btn-primary'>Submit</button>
       </form>
       <br>
 
-      @if (Model == null) {
+      @if (Model.GetDefault()) {
         <hr>
       } else if (!Model.IsWordValid() || !Model.IsValid()) {
         <hr>
-        <h2>Your input is not svalid</h2>
+        <p class="output">Your input is not svalid</p>
       } else if (Model.WordCounter() == 0) {
         <hr>
-        <h2>The word <span>@Model.GetWord()</span> does not appear in the sentence <span>@Model.GetWords()</span>.</h2>
+        <p class="output">The word <span>&quot;@Model.GetWord()&quot;</span> does not appear in the given text <span>&quot;@Model.GetWords()&quot;</span>.</p>
       } else if (Model.WordCounter() == 1) {
         <hr>
-        <h2>The word <span>@Model.GetWord()</span> appears in the sentence <span>@Model.GetWords()</span> 1 time</h2>
+        <p class="output">The word <span>&quot;@Model.GetWord()&quot;</span> appears in the given text <span>&quot;@Model.GetWords()&quot;</span> <span class="counter">1 time</span></p>
       } else if (Model.WordCounter() > 1){
         <hr>
-        <h2>The word <span>@Model.GetWord()</span> appears in the sentence <span>@Model.GetWords()</span> @Model.WordCounter() times</h2>
+        <p class="output">The word <span>&quot;@Model.GetWord()&quot;</span> appears in the given text <span>&quot;@Model.GetWords()&quot;</span> <span class="counter">@Model.WordCounter() times</span></p>
       }
       <footer>
        <ul>

@@ -8,11 +8,18 @@ namespace WordCounterApp
     {
         private string _word;
         private string _words;
+        private bool _default;
 
-        public RepeatCounter(string myWord, string myWords)
+        public RepeatCounter(string myWord, string myWords, bool defaultObject)
         {
             _word = myWord;
             _words = myWords;
+            _default = defaultObject;
+        }
+
+        public bool GetDefault()
+        {
+            return _default;
         }
 
         public string GetWord()
@@ -53,13 +60,13 @@ namespace WordCounterApp
 
         public int WordCounter()
         {
-            _word = _word.ToLower().Trim();
-            _words = _words.ToLower();
+            string word = _word.ToLower().Trim();
+            string words = _words.ToLower();
             string[] separators = {",", ".", "!", "?", ";", ":", " "};
-            string[] words = _words.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+            string[] allWords = words.Split(separators, StringSplitOptions.RemoveEmptyEntries);
             int counter = 0;
-            for (int i = 0; i < words.Length; i++) {
-                if (_word == words[i]) {
+            for (int i = 0; i < allWords.Length; i++) {
+                if (word == allWords[i]) {
                     counter++;
                 }
             }
