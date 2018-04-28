@@ -12,7 +12,8 @@ namespace WordCounterApp
 
         public RepeatCounter(string myWord, string myWords, bool defaultObject)
         {
-            _word = myWord;
+            char[] charsToGetRidOf = { '.', ',' ,'!', ' '};
+            _word = myWord.Trim(charsToGetRidOf);
             _words = myWords;
             _default = defaultObject;
         }
@@ -60,7 +61,7 @@ namespace WordCounterApp
 
         public int WordCounter()
         {
-            string word = _word.ToLower().Trim();
+            string word = _word.ToLower();
             string words = _words.ToLower();
             string[] separators = {",", ".", "!", "?", ";", ":", " "};
             string[] allWords = words.Split(separators, StringSplitOptions.RemoveEmptyEntries);
